@@ -2,6 +2,8 @@
 
 [![NPM](https://nodei.co/npm/cordova-plugin-secure-storage-echo.png?mini=true)](https://nodei.co/npm/cordova-plugin-secure-storage-echo/)
 
+##### This is a fork [mibrito707/cordova-plugin-secure-storage-echo](https://github.com/mibrito707/cordova-plugin-secure-storage-echo) of a fork [Crypho/cordova-plugin-secure-storage](https://github.com/Crypho/cordova-plugin-secure-storage) and uses the encryption cipher method of the original branch (GCC), this way it's possible to migrate/update to this package without losing data.
+
 ##### Forked from [Crypho/cordova-plugin-secure-storage](https://github.com/Crypho/cordova-plugin-secure-storage) in a effort to keep that project alive. Thank you @ggozad.
 
 ## Introduction
