@@ -20,6 +20,11 @@ public class SharedPreferencesHandler {
         editor.commit();
     }
 
+    boolean isEmpty() {
+        int numOfPrefs = prefs.getAll().size();
+        return (numOfPrefs == 0);
+    }
+
     String fetch (String key){
         return prefs.getString("_SS_" + key, null);
     }
