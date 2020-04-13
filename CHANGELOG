@@ -1,5 +1,10 @@
 Changelog
 =========
+6.0.2 - 2020-03-23
+------------------
+
+- Repackage as cordova-plugin-secure-storage-android10.
+  [Sotam]
 
 5.0.1 - 2019-11-25
 ------------------
