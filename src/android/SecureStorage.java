@@ -4,11 +4,13 @@ import android.annotation.TargetApi;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.biometrics.BiometricPrompt;
 import android.os.Build;
+import android.os.CancellationSignal;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
-import android.hardware.biometrics;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaArgs;
@@ -20,6 +22,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.concurrent.Executor;
 
 public class SecureStorage extends CordovaPlugin {
     private static final String TAG = "SecureStorage";
@@ -155,7 +158,7 @@ public class SecureStorage extends CordovaPlugin {
             if (value != null) {
                 JSONObject json = new JSONObject(value);
                 final byte[] encKey = Base64.decode(json.getString("key"), Base64.DEFAULT);
-                JSONObject data = json.getJSONObject("value");
+                final JSONObject data = json.getJSONObject("value");
                 final byte[] ct = Base64.decode(data.getString("ct"), Base64.DEFAULT);
                 final byte[] iv = Base64.decode(data.getString("iv"), Base64.DEFAULT);
                 final byte[] adata = Base64.decode(data.getString("adata"), Base64.DEFAULT);
@@ -244,7 +247,7 @@ public class SecureStorage extends CordovaPlugin {
                     BiometricPrompt.Builder biometricPromptBuilder = new BiometricPrompt.Builder(getContext());
                     biometricPromptBuilder.setTitle(title);
                     biometricPromptBuilder.setDescription(description);
-                    biometricPromptBuilder.setDeviceCredentialAllowed(true);
+                    //biometricPromptBuilder.setDeviceCredentialAllowed(true);
                     BiometricPrompt biometricPrompt = biometricPromptBuilder.build();
                     CancellationSignal cancellationSignal = new CancellationSignal();
                     final Executor executor = getExecutor();
@@ -301,7 +304,7 @@ public class SecureStorage extends CordovaPlugin {
      *
      * @param userAuthenticationValidityDuration User authentication validity duration in seconds
      */
-    private void generateEncryptionKeys(Integer userAuthenticationValidityDuration) {
+    private void generateEncryptionKeys(final Integer userAuthenticationValidityDuration) {
         if (generateKeysContext != null && !generateKeysContextRunning) {
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
