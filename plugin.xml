@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-secure-storage-android10"
-    version="6.0.3">
+    version="6.0.4">
 
     <name>SecureStorage</name>
     <author>Crypho AS</author>
@@ -57,6 +57,11 @@
         <source-file src="src/android/RSA.java" target-dir="src/com/crypho/plugins/" />
         <source-file src="src/android/AES.java" target-dir="src/com/crypho/plugins/" />
         <source-file src="src/android/SharedPreferencesHandler.java" target-dir="src/com/crypho/plugins/" />
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+            <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+        </config-file>
     </platform>
 
     <platform name="browser">
@@ -72,5 +77,4 @@
             <runs />
         </js-module>
     </platform>
-
 </plugin>
