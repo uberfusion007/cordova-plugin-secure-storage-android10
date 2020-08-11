@@ -328,7 +328,9 @@ ss.set(
 );
 ```
 
-When reading value, the same cypher mode will be applied.  
+When reading value, the same cypher mode will be applied.
+
+This can also be useful when reading value from encrypted by another App, that use AES GCM cypher mode.  
 
 #### Windows
 
