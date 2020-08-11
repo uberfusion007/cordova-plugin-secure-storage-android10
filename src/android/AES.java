@@ -13,19 +13,26 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.KeyGenerator;
 
 public class AES {
-    private static final String CIPHER_MODE = "CCM";
+    private static final String CIPHER_MODE = "CCM"; // Can be CCM or GCM
     private static final int KEY_SIZE = 256;
     private static final int VERSION = 1;
     private static final Cipher GLOBAL_CIPHER = getCipher(CIPHER_MODE);
 
-    public static JSONObject encrypt(byte[] msg, byte[] adata) throws Exception {
+    public static JSONObject encrypt(byte[] msg, byte[] adata, String cypherMode) throws Exception {
         byte[] iv, ct, secretKeySpec_enc;
-        synchronized (GLOBAL_CIPHER) {
+
+        Cipher cipher;
+        if (CIPHER_MODE.equals(cipherMode)) {
+            cipher = GLOBAL_CIPHER;
+        } else {
+            cipher = getCipher(cipherMode);
+        }
+        synchronized (cipher) {
             SecretKeySpec secretKeySpec = generateKeySpec();
             secretKeySpec_enc = secretKeySpec.getEncoded();
-            initCipher(Cipher.ENCRYPT_MODE, secretKeySpec, null, adata, GLOBAL_CIPHER);
-            iv = GLOBAL_CIPHER.getIV();
-            ct = GLOBAL_CIPHER.doFinal(msg);
+            initCipher(Cipher.ENCRYPT_MODE, secretKeySpec, null, adata, cipher);
+            iv = cipher.getIV();
+            ct = cipher.doFinal(msg);
         }
 
         JSONObject value = new JSONObject();
@@ -33,7 +40,7 @@ public class AES {
         value.put("v", Integer.toString(VERSION));
         value.put("ks", Integer.toString(KEY_SIZE));
         value.put("cipher", "AES");
-        value.put("mode", CIPHER_MODE);
+        value.put("mode", cipherMode);
         value.put("adata", Base64.encodeToString(adata, Base64.DEFAULT));
         value.put("ct", Base64.encodeToString(ct, Base64.DEFAULT));
 
@@ -47,7 +54,7 @@ public class AES {
 
     public static String decrypt(byte[] buf, byte[] key, byte[] iv, byte[] adata, String cipherMode) throws Exception {
         Cipher cipher;
-        if ( cipherMode == CIPHER_MODE ) {
+        if (CIPHER_MODE.equals(cipherMode)) {
             cipher = GLOBAL_CIPHER;
         } else {
             cipher = getCipher(cipherMode);

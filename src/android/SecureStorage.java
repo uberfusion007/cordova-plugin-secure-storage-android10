@@ -133,14 +133,16 @@ public class SecureStorage extends CordovaPlugin {
             final String service = args.getString(0);
             final String key = args.getString(1);
             final String value = args.getString(2);
+            final String cypherMode = args.getString(3);
             final String adata = service;
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     try {
-                        JSONObject result = AES.encrypt(value.getBytes(), adata.getBytes());
+                        JSONObject result = AES.encrypt(value.getBytes(), adata.getBytes(), cypherMode);
                         byte[] aes_key = Base64.decode(result.getString("key"), Base64.DEFAULT);
                         byte[] aes_key_enc = rsa.encrypt(aes_key, service2alias(service));
                         result.put("key", Base64.encodeToString(aes_key_enc, Base64.DEFAULT));
+                        if (cypherMode != null) result.put("mode", cypherMode);
                         getStorage(service).store(key, result.toString());
                         callbackContext.success(key);
                     } catch (Exception e) {
