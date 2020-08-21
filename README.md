@@ -314,6 +314,24 @@ Changing the lock screen type on Android erases the keystore (issues [61989](htt
 
 This means that any values saved using the plugin could be lost if the user changes security settings. The plugin should therefore be used as a secure credential cache and not persistent storage on Android.
 
+##### Android AES crypher mode
+
+An optional parameter `cypherMode` can be used, for `set()`, to select a specific AES cypher mode, to encrypt: 
+```js
+ss.set(
+  function(key) {/*success*/},
+  function(error) {{/*error*/},
+  "mykey",
+  "myvalue",
+   // cypherMode: "CCM" (default) or "GCM" (Galois/Counter Mode)
+  "CCM"
+);
+```
+
+When reading value, the same cypher mode will be applied.
+
+This can also be useful when reading value from encrypted by another App, that use AES GCM cypher mode.  
+
 #### Windows
 
 Windows implementation is based on [PasswordVault](https://msdn.microsoft.com/en-us/library/windows/apps/windows.security.credentials.passwordvault.aspx) object from the [Windows.Security.Credentials](https://msdn.microsoft.com/en-us/library/windows/apps/windows.security.credentials.aspx) namespace.
