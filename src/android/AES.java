@@ -18,7 +18,7 @@ public class AES {
     private static final int VERSION = 1;
     private static final Cipher GLOBAL_CIPHER = getCipher(CIPHER_MODE);
 
-    public static JSONObject encrypt(byte[] msg, byte[] adata, String cypherMode) throws Exception {
+    public static JSONObject encrypt(byte[] msg, byte[] adata, String cipherMode) throws Exception {
         byte[] iv, ct, secretKeySpec_enc;
 
         Cipher cipher;
