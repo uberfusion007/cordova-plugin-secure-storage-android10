@@ -1,6 +1,6 @@
 Changelog
 =========
-6.0.3 - 2020-04-13
+6.0.5 - 2020-08-24
 ------------------
 
 - Implemented BiometricPrompt#setDeviceCredentialAllowed for API 29 and above - [PR #21](https://github.com/mibrito707/cordova-plugin-secure-storage-echo/pull/21)
@@ -9,6 +9,11 @@ Changelog
 - Added retro-compatibility option for data encrypted with old cipher - [PR #36](https://github.com/mibrito707/cordova-plugin-secure-storage-echo/pull/36)
 - fix: further guard against NPEs - [PR #40](https://github.com/mibrito707/cordova-plugin-secure-storage-echo/pull/40)
 - Fix to storage getting wiped after restarting app with Ionic - [PR #41](https://github.com/mibrito707/cordova-plugin-secure-storage-echo/pull/41)
+
+6.0.4 - 2020-08-24
+------------------
+
+- Fixed package naming in plugin.xml
 
 6.0.2 - 2020-03-23
 ------------------
