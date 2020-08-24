@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-secure-storage-android10",
-  "version": "6.0.4",
+  "version": "6.0.5",
   "description": "Secure storage plugin for iOS & Android 10 (backwards compatible with Android 9)",
   "author": "Yiorgis Gozadinos <ggozad@crypho.com>",
   "contributors": [
@@ -27,7 +27,12 @@
   ],
   "cordova": {
     "id": "cordova-plugin-secure-storage-android10",
-    "platforms": ["android", "ios", "wp8", "windows"]
+    "platforms": [
+      "android",
+      "ios",
+      "wp8",
+      "windows"
+    ]
   },
   "keywords": [
     "cordova",
