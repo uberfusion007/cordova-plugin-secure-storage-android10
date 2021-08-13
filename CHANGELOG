@@ -1,5 +1,10 @@
 Changelog
 =========
+6.0.6 - 2021-08-13
+------------------
+
+- Disabled android biometric prompt. (Prompt biometric manually)
+
 6.0.5 - 2020-08-24
 ------------------
 

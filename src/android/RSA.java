@@ -27,7 +27,9 @@ public class RSA extends AbstractRSA {
             }
             KeyFactory factory = KeyFactory.getInstance(privateKey.getAlgorithm(), KEYSTORE_PROVIDER);
             KeyInfo keyInfo = factory.getKeySpec(privateKey, KeyInfo.class);
-            return keyInfo.isInsideSecureHardware();
+            // Make biometric prompt manually instead of randomly.
+            return false;
+            //return keyInfo.isInsideSecureHardware();
         } catch (Exception e) {
             Log.i(TAG, "Checking encryption keys failed.", e);
             return false;

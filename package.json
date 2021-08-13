@@ -1,6 +1,6 @@
 {
-  "name": "cordova-plugin-secure-storage-android10",
-  "version": "6.0.5",
+  "name": "@uberfusion007/cordova-plugin-secure-storage-android10",
+  "version": "6.0.6",
   "description": "Secure storage plugin for iOS & Android 10 (backwards compatible with Android 9)",
   "author": "Yiorgis Gozadinos <ggozad@crypho.com>",
   "contributors": [
@@ -50,7 +50,7 @@
   "main": "www/securestorage.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sotam/cordova-plugin-secure-storage-android10.git"
+    "url": "git+https://github.com/uberfusion007/cordova-plugin-secure-storage-android10.git"
   },
   "scripts": {
     "eslint": "./node_modules/.bin/eslint www/securestorage.js tests/tests.js"
@@ -61,7 +61,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Sotam/cordova-plugin-secure-storage-android10/issues"
+    "url": "https://github.com/uberfusion007/cordova-plugin-secure-storage-android10/issues"
   },
-  "homepage": "https://github.com/Sotam/cordova-plugin-secure-storage-android10#readme"
+  "homepage": "https://github.com/uberfusion007/cordova-plugin-secure-storage-android10#readme"
 }
