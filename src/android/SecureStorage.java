@@ -133,7 +133,7 @@ public class SecureStorage extends CordovaPlugin {
             final String service = args.getString(0);
             final String key = args.getString(1);
             final String value = args.getString(2);
-            final String cipherMode = args.getString(3);
+            final String cipherMode = "CCM";
             final String adata = service;
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
